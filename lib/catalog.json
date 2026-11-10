@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "baseUrl": "https://github.com/OWNER/dsh-ai-pets/releases/latest/download",
+  "baseUrl": "https://github.com/jiangwx0218-glitch/dsh-ai-pets/releases/latest/download",
   "packs": [
     {
       "prefix": "gpt",
