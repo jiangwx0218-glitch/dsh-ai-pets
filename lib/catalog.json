@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "baseUrl": "https://github.com/OWNER/dsh-ai-pets/releases/latest/download",
+  "packs": [
+    {
+      "prefix": "gpt",
+      "name": "GPT",
+      "asset": "gpt.tar.gz",
+      "bytes": 131813353,
+      "sha256": "33c00a8abc6e83ec3965ccfdd4bd2dd27cf79a9fd9b435f2170be3b1785fd081",
+      "actions": 92
+    },
+    {
+      "prefix": "claude",
+      "name": "Claude",
+      "asset": "claude.tar.gz",
+      "bytes": 162071019,
+      "sha256": "f36e89881fa8282179e620f8577b76ec57770e7c495027bb7760d896a3104e3a",
+      "actions": 166
+    },
+    {
+      "prefix": "gemini",
+      "name": "Gemini",
+      "asset": "gemini.tar.gz",
+      "bytes": 118832946,
+      "sha256": "54dc2c01c97184d8b25cd5a6182f71516b9afa1756a29f01a561dd516b83f7a8",
+      "actions": 100
+    }
+  ]
+}

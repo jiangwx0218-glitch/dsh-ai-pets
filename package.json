@@ -1,0 +1,36 @@
+{
+  "name": "dsh-ai-pets",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness 桌宠素材包：GPT / Claude / Gemini 三只 AI 桌宠，装上就能在桌面上溜达、被拖拽、点着互动、看余额。素材从 GitHub Release 下载，不塞进 npm 包。",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "desktop-pet",
+    "ai-pets",
+    "dsh-pet"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "author": "dsh-ai-pets contributors",
+  "files": [
+    "lib",
+    "packs",
+    "cordis.patch.yml",
+    "README.md",
+    "NOTICE.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build:release": "node scripts/build-release.mjs"
+  }
+}

@@ -1,0 +1,21 @@
+# ============================================================================
+# dsh-ai-pets —— DSH bundle patch
+# ============================================================================
+# 挂载声明：DSH 启动时按 bundle 层栈叠加各插件 patch，这一层把桌宠素材包
+# 插进 profile 的配置树。
+#
+# 安装方式：
+#   dsh plugin --profile <profile> add dsh-ai-pets
+# 或本地开发：
+#   dsh plugin --profile <profile> add link:<本目录绝对路径>
+#
+# 可选配置（写在 profile 的 cordis.patch.yml 里覆盖）：
+#   config:
+#     autoInstall: false   # 只写配置不下载素材
+#     only: [gpt]          # 只装某几只（gpt / claude / gemini）
+#     baseUrl: https://... # 自建镜像：素材 tar.gz 的目录
+# ============================================================================
+
+- insert:
+    - id: dsh-ai-pets
+      name: 'dsh-ai-pets'
