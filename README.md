@@ -27,15 +27,37 @@
 
 ## 安装
 
-```bash
-# 1) 先有 dsh-pet（桌宠宿主），没有就先装
-dsh plugin --profile web add dsh-pet
+> 本包暂未发布到 npm，统一走 **GitHub git 源**安装。
 
-# 2) 再装本包
-dsh plugin --profile web add dsh-ai-pets
+前置：先有 `dsh-pet`（桌宠宿主），没有就先装。
+
+**A. 命令行（推荐）**
+
+```bash
+# 1) 先装桌宠宿主，已有可跳过
+dsh plugin --profile <profile> add dsh-pet
+
+# 2) 装本包（GitHub git 源）
+dsh plugin --profile <profile> add github:jiangwx0218-glitch/dsh-ai-pets
 
 # 3) 重启
 dsh web    # 桌面版直接重开 App
+```
+
+`<profile>` 按你的安装形态填：桌面版 App 是 `desktop`，`dsh web` 起的是 `web`。没装 `dsh` CLI 的机器走下面 B。
+
+**B. 图形界面（不用命令行）**
+
+DSH → 设置 → 插件 → 添加插件，粘贴 `github:jiangwx0218-glitch/dsh-ai-pets` → 重启 DSH。
+
+本地开发时也可以直接填本目录的绝对路径（会软链进去，改代码立刻生效）。
+
+> **装完必须重启 DSH，插件才生效。** 插件列表和桌面窗口是启动时建的，运行中的 DSH 不会热加载新插件、也不会重新布局已有的宠物窗口。装完没反应，先重启一次再判断。
+
+**卸载**
+
+```bash
+dsh plugin --profile <profile> remove dsh-ai-pets
 ```
 
 第一次启动后，插件会用 100MB+ 的下载换三只宠物，日志里能看到进度：
@@ -48,7 +70,7 @@ dsh web    # 桌面版直接重开 App
 [dsh-ai-pets] 全部处理完毕，重启 DSH 后桌面上就能看到
 ```
 
-**素材不在 npm 包里**——单个宠物 100MB 上下，塞进包里既不现实也没必要。包内只有配置和下载逻辑，视频从 GitHub Release 拉。
+**素材不在插件包里**——单个宠物 100MB 上下，塞进包里既不现实也没必要。包内只有配置和下载逻辑，视频从 GitHub Release 拉。
 
 ## 配置
 
@@ -61,7 +83,7 @@ dsh web    # 桌面版直接重开 App
       config:
         autoInstall: true        # false = 只写配置，素材自己手动放
         only: [gpt, gemini]      # 只装这几只，默认全装
-        baseUrl: https://colormuse.github.io/...  # 自建镜像时改这里
+        baseUrl: https://github.com/jiangwx0218-glitch/dsh-ai-pets/releases/latest/download  # 默认值，自建镜像时改这里
 ```
 
 或者手动放素材（国内网络拉 GitHub 经常卡）：
@@ -114,14 +136,16 @@ tar -xzf gpt.tar.gz -C ~/.dsh/dsh-pet/pet/
 ```bash
 # 本机素材（~/.dsh/dsh-pet/pet/）重新打 Release 包 + 算 sha256 写 catalog
 node scripts/build-release.mjs --out dist \
-  --base-url https://github.com/<owner>/dsh-ai-pets/releases/latest/download
+  --base-url https://github.com/jiangwx0218-glitch/dsh-ai-pets/releases/latest/download
 
 # 冒烟测试：本地起个静态服指 dist，用假 DSH_HOME 跑一遍安装链路
+# （DSH_HOME 里必须先有 dsh-pet/pet 目录，模拟已装好桌宠宿主）
+mkdir -p /tmp/aipets-home/dsh-pet/pet
 python3 -m http.server 8791 --directory dist &
 DSH_HOME=/tmp/aipets-home node test/apply-smoke.mjs '{"baseUrl":"http://127.0.0.1:8791","only":["gpt"]}'
 ```
 
-发布：推 tag `v0.1.0` → GitHub Actions 自动打包三只 tar.gz 挂到 Release（见 `.github/workflows/release.yml`）。
+发布：`./scripts/publish.sh v0.1.0`（打包 → 自检 → `gh release create` 上传三只 tar.gz），然后提交代码、打 tag 推送。仓库目前没有自动发布 workflow，`.github/workflows/ci.yml` 只做语法与清单检查。
 
 ## License
 

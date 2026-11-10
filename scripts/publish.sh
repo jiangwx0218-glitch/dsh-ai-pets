@@ -44,9 +44,9 @@ Release 建好了。剩下两步：
   1) 提交代码（dist/ 已在 .gitignore 里，素材只走 Release）
      git add -A && git commit -m "release $VERSION" && git tag $VERSION && git push --follow-tags
 
-  2) 发 npm（可选，插件本体很小）
-     npm publish
+  2) 不发 npm（暂未发布，安装统一走 GitHub git 源）
+     用户安装：dsh plugin --profile <profile> add github:<owner>/<repo>
 
 验证安装：
-  dsh plugin --profile web add dsh-ai-pets
+  dsh plugin --profile <profile> add github:jiangwx0218-glitch/dsh-ai-pets
 EOF
