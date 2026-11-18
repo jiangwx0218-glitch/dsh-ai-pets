@@ -1,0 +1,39 @@
+﻿dsh-pet 桌面版 0.4.9 · 使用条款与素材说明（NOTICE 摘要）
+
+装之前请读完这一页。点「我接受」表示你接受以下条款。
+
+一、代码
+本项目的代码（lib/、scripts/、test/、packs/ 等）采用 MIT 许可，完整文本见仓库 LICENSE。
+
+二、宠物素材（不是本项目原创）
+素材来自以下上游项目，经本项目把精灵图切成帧序列、再转成带 alpha 的 VP9 WebM：
+  · dsh-pet — 作者 PC2005-cloud
+    https://github.com/PC2005-cloud/dsh-pet
+  · aboutme-pets — 作者 hunmer
+    https://github.com/hunmer/aboutme-pets
+
+使用条款（照抄上游，务必遵守）：
+  1. 禁止商用。不得用于付费产品、广告投放、商业推广、带货、付费课程、付费素材包
+     等任何以盈利为目的的场景。
+  2. 二创开放，但必须署名。基于这些素材的二次创作（剪辑视频、表情包、壁纸、改色等）
+     公开发布时，须注明素材来自上述上游仓库并附链接。
+  3. 不得声称素材为本仓库原创。
+  4. 上游若更新条款，以上游最新条款为准。
+
+三、角色形象
+GPT / Claude / Gemini 三只的形象与动作由上游作者创作。本项目不对其角色设定主张任何
+权利，也不代表 OpenAI / Anthropic / Google 的官方形象，更没有拿到它们的授权。
+
+四、这个安装包会写这些位置（都在当前用户下，不需要管理员权限）
+  · 程序目录      %LOCALAPPDATA%\dsh-pet
+  · 用户数据      %USERPROFILE%\.dsh\dsh-pet
+                  （宠物配置与动画；这里已有的文件不会被安装包覆盖）
+  · 快捷方式      开始菜单、桌面各一个
+  · 卸载登记      HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall\dsh-pet
+
+卸载会删掉程序目录、两个快捷方式和卸载登记项。
+交互卸载会问一次「是否一并删除宠物数据」：选「是」连同 %USERPROFILE%\.dsh\dsh-pet
+（约 394 MB，含你自己的 API 设置与改过的宠物配置）一起删掉；选「否」则保留。
+静默卸载（/S）不问，也不删这部分数据。机器上还装着 DSH 插件版桌宠时（共用同一目录），应选「否」。
+
+完整条款与逐场景说明见仓库根目录 NOTICE.md。
