@@ -1,6 +1,15 @@
 node_modules/
 dist/
-build/
+# build/ 整体忽略（payload/upstream 体积大、含构建机残留），
+# 只放行构建脚本、取证结论与发布证据。
+build/*
+!build/windows/
+!build/PAYLOAD-LAYOUT.md
+!build/payload-manifest.sha256
+!build/upstream/
+build/upstream/*
+!build/upstream/FINDINGS.md
+!build/upstream/notes/
 mcp-results/
 *.log
 .DS_Store
